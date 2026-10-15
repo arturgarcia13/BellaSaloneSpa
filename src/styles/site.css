@@ -239,10 +239,9 @@
 
 /* Services index */
 .services {
-  border-top: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+  border-top: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
   background:
-    radial-gradient(80% 60% at 100% 0%, color-mix(in oklab, var(--accent-soft) 28%, transparent), transparent 62%),
-    var(--bg);
+    color-mix(in oklab, var(--paper) 62%, var(--bg));
 }
 .services__head {
   display: grid;

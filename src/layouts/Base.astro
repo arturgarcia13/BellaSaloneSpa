@@ -1,0 +1,126 @@
+---
+import { site } from '../data/site';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/site.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = site.seoTitle,
+  description = site.description,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FBF8F4" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}/og.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preload" href="/fonts/cormorant-garamond-300-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
+    <header class="site-header" data-header>
+      <div class="site-header__inner container">
+        <a class="brand" href="/" aria-label="BELLA Salon & Spa">
+          <span class="brand__mark">Bella</span>
+          <span class="brand__sub">Salon &amp; Spa</span>
+        </a>
+        <nav class="site-header__nav" aria-label="Principal">
+          <a href="#rituais">Rituais</a>
+          <a href="#experiencia">Experiência</a>
+          <a href="#unidades">Unidades</a>
+          <a class="btn btn--small btn--ghost" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">Agendar</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <p class="site-footer__name">Bella</p>
+          <p class="site-footer__sub">Salon &amp; Spa · Fortaleza</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <p class="label">Unidades</p>
+            {site.units.map((u) => (
+              <a class="site-footer__link" href={u.routeHref} target="_blank" rel="noopener noreferrer">{u.name}</a>
+            ))}
+          </div>
+          <div>
+            <p class="label">Contato</p>
+            <a class="site-footer__link" href={`tel:${site.phone.replace(/\D/g, '')}`}>{site.phone}</a>
+            <a class="site-footer__link" href={site.instagramHref} target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="site-footer__link" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">Agendamento</a>
+          </div>
+          <div>
+            <p class="label">Horário</p>
+            <p class="site-footer__text">{site.hours}</p>
+          </div>
+        </div>
+        <div class="site-footer__bottom">
+          <p>© {new Date().getFullYear()} Bella Salon &amp; Spa. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Reveal + light band. One authored moment. Runs on view and respects motion preference.
+      const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const js = document.documentElement.classList.contains('js');
+      if (js) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+      }
+
+      if (!prefersReduced) {
+        let ticking = false;
+        const update = () => {
+          const y = window.scrollY;
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          const p = h > 0 ? y / h : 0;
+          document.documentElement.style.setProperty('--scroll', String(p));
+          ticking = false;
+        };
+        const onScroll = () => {
+          if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        update();
+      }
+    </script>
+  </body>
+</html>

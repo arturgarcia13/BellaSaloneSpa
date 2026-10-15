@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base>
+  <div class="light-band" aria-hidden="true"></div>
+
+  <section class="hero section">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__inner" data-reveal>
+          <p class="label hero__marks">
+            <span>Meireles</span>
+            <span>Aldeota</span>
+            <span>Fortaleza</span>
+          </p>
+          <h1 class="hero__headline">
+            Você já se <em>sentiu Bella</em> hoje?
+          </h1>
+          <p class="hero__lede">{site.hero.lede}</p>
+          <div class="hero__actions">
+            <a class="btn btn--cta" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+              {site.hero.cta}
+            </a>
+            <a class="btn btn--ghost" href="#rituais">
+              {site.hero.ctaSecondary}
+            </a>
+          </div>
+          <div class="hero__meta">
+            <span>{site.phone}</span>
+            <span>Seg a sab, 8h as 19h</span>
+          </div>
+        </div>
+
+        <aside class="hero__panel" data-reveal aria-label="Ambiente Bella">
+          <span class="hero__panel-corner">Bella · 001</span>
+          <p class="hero__panel-tag">Spa urbano e salão premium de beleza feminina</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="rituais" class="services section">
+    <div class="container">
+      <div class="services__head" data-reveal>
+        <div>
+          <p class="label">Rituais</p>
+          <h2>Quatro linguagens de cuidado, um mesmo padrão de precisão.</h2>
+        </div>
+        <p class="services__lede">
+          Do loiro de assinatura ao dia da noiva, cada serviço é pensado como ritual:
+          escuta, técnica e um resultado que acompanha você fora do salão.
+        </p>
+      </div>
+
+      {site.services.map((s) => (
+        <article class="service-row" data-reveal>
+          <div>
+            <h3 class="service-row__title">{s.title}</h3>
+            <p class="service-row__sub">{s.subtitle}</p>
+          </div>
+          <ul class="service-row__items">
+            {s.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="experiencia" class="band section">
+    <div class="container">
+      <div data-reveal>
+        <p class="label">Experiência Bella</p>
+        <blockquote class="band__quote">
+          <span class="band__quote-mark">“</span>
+          Você já se sentiu Bella hoje?
+        </blockquote>
+      </div>
+
+      <div class="pillars">
+        {site.pillars.map((p) => (
+          <article class="pillar" data-reveal>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="prova" class="proof section">
+    <div class="container">
+      <div class="proof__grid">
+        <div data-reveal>
+          <p class="label">Prova & presença</p>
+          <h2>Resultados que não precisam exagerar para convencer.</h2>
+          <ul class="proof__list">
+            {site.proof.lines.map((line) => (
+              <li>
+                <span class="dot" aria-hidden="true"></span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="proof__note">{site.proof.note}</p>
+        </div>
+
+        <figure class="proof__visual" data-reveal aria-label="Espaço de resultados">
+          <figcaption class="proof__visual-caption">
+            Antes e depois reais, publicados com autorização de cada cliente.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="unidades" class="units section">
+    <div class="container">
+      <div class="units__head" data-reveal>
+        <p class="label">Unidades & contato</p>
+        <h2>Dois endereços em Fortaleza. Um mesmo padrão de atendimento.</h2>
+        <p style="margin-top:1.25rem;color:var(--muted);max-width:44rem;">
+          Agende pelo link de atendimento ou trace a rota até a unidade mais próxima.
+          Telefone direto: <a href={`tel:${site.phone.replace(/\D/g, '')}`} class="num">{site.phone}</a>.
+        </p>
+      </div>
+
+      <div class="units__grid">
+        {site.units.map((u) => (
+          <article class="unit-card" data-reveal>
+            <h3 class="unit-card__name">{u.name}</h3>
+            <p class="unit-card__addr">{u.address}</p>
+            <p class="unit-card__status">{u.name === 'Meireles' ? 'Seg a sab, 8h as 19h' : 'Horario: seg a sab, 8h as 19h'}</p>
+            <div class="unit-card__row">
+              <a class="btn btn--cta btn--small" href={u.routeHref} target="_blank" rel="noopener noreferrer">
+                Traçar rota
+              </a>
+              <a class="btn btn--ghost btn--small" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+                Agendar
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div style="margin-top: clamp(2.5rem,5vw,4rem); text-align:center;" data-reveal>
+        <a class="btn btn--cta" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+          Agendar meu horário
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero__panel-tag {
+    font-style: italic;
+  }
+  .service-row__lede { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .light-band { display: none; }
+  }
+</style>

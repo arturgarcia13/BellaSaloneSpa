@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title={`Página não encontrada · ${site.shortName}`}>
+  <section class="section" style="min-height:60vh;display:flex;align-items:center;">
+    <div class="container">
+      <p class="label">404</p>
+      <h1 class="display" style="margin-block:1rem;">Esta página desapareceu do salão.</h1>
+      <p style="color:var(--muted);max-width:40ch;margin-bottom:2rem;">
+        A rota que você procurou não existe ou foi movida. Volte à página inicial ou agende seu horário.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a class="btn btn--cta" href="/">Voltar ao início</a>
+        <a class="btn btn--ghost" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">Agendar meu horário</a>
+      </div>
+    </div>
+  </section>
+</Base>

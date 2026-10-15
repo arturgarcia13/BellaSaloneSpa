@@ -23,7 +23,7 @@
   --text-body: clamp(1rem, 1.05vw, 1.1rem);
   --text-small: 0.85rem;
 
-  --section: clamp(96px, 11vw, 168px);
+  --section: clamp(112px, 13vw, 196px);
   --container: 1180px;
   --gutter: clamp(20px, 5vw, 48px);
 

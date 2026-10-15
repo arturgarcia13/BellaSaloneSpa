@@ -71,14 +71,14 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           <div>
             <p class="label">Unidades</p>
             {site.units.map((u) => (
-              <a class="site-footer__link" href={u.routeHref} target="_blank" rel="noopener noreferrer">{u.name}</a>
+              <a class="site-footer__link" href={u.mapsHref} target="_blank" rel="noopener noreferrer">{u.name}</a>
             ))}
           </div>
           <div>
             <p class="label">Contato</p>
             <a class="site-footer__link" href={`tel:${site.phone.replace(/\D/g, '')}`}>{site.phone}</a>
             <a class="site-footer__link" href={site.instagramHref} target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a class="site-footer__link" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">Agendamento</a>
+            <a class="site-footer__link" href={site.whatsappHref}>Agendamento</a>
           </div>
           <div>
             <p class="label">Horário</p>

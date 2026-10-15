@@ -9,7 +9,7 @@ export const site = {
   description:
     'Salão e spa urbano premium em Fortaleza. Cabelos, rosto & olhar, dia da noiva e spa. Agende seu horário nas unidades Meireles e Aldeota.',
   phone: '(85) 3512-4067',
-  whatsappHref: 'https://linktr.ee/bellasalonespa',
+  whatsappHref: '/#unidades',
   instagramHref: 'https://www.instagram.com/bellasalonespa',
   hours: 'Segunda a sábado, 8h às 19h',
   units: [

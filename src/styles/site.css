@@ -105,7 +105,7 @@
     radial-gradient(125% 85% at 100% 0%, color-mix(in oklab, var(--accent-soft) 82%, transparent), transparent 58%),
     radial-gradient(95% 75% at 0% 65%, color-mix(in oklab, var(--paper) 75%, transparent), transparent 62%),
     radial-gradient(60% 50% at 50% 40%, color-mix(in oklab, var(--glow) 8%, transparent), transparent 70%),
-    color-mix(in oklab, var(--paper) 88%, var(--ink) 12%);
+    color-mix(in oklab, var(--paper) 84%, var(--brand) 16%);
 }
 .hero__grid {
   display: grid;

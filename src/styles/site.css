@@ -180,8 +180,8 @@
 /* Atmospheric panel */
 .hero__panel {
   position: relative;
-  aspect-ratio: 4/5;
-  max-height: none;
+  aspect-ratio: 3/4;
+  max-height: 85vh;
   border-radius: var(--radius);
   background:
     linear-gradient(160deg, color-mix(in oklab, var(--paper) 90%, white), color-mix(in oklab, var(--accent-soft) 80%, var(--paper)));
@@ -409,7 +409,7 @@
 
 .proof__visual {
   position: relative;
-  aspect-ratio: 4/5;
+  aspect-ratio: 5/6;
   border-radius: var(--radius);
   background:
     linear-gradient(140deg, var(--paper), color-mix(in oklab, var(--accent-soft) 60%, var(--paper)));
@@ -547,8 +547,8 @@
     grid-template-columns: 1fr;
   }
   .hero__panel {
-    aspect-ratio: 16/9;
-    max-height: 60vh;
+    aspect-ratio: 3/4;
+    max-height: 70vh;
   }
   .services__head {
     grid-template-columns: 1fr;
@@ -589,7 +589,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   z-index: 0;
 }
 .hero__panel::before,
@@ -606,7 +607,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   z-index: 0;
 }
 .proof__visual::before {

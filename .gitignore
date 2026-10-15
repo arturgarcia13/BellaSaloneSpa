@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# QA screenshots
+.shots/
+
 # dependencies
 node_modules/
 

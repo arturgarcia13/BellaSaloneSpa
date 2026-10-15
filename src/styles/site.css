@@ -101,11 +101,13 @@
   padding-bottom: var(--section);
   overflow: hidden;
   isolation: isolate;
+  /* Warm champagne ground: cream warmed only with the brand's champagne accent,
+     one step darker than the page cream so the hero reads as its own surface. */
   background:
-    radial-gradient(125% 85% at 100% 0%, color-mix(in oklab, var(--accent-soft) 82%, transparent), transparent 58%),
-    radial-gradient(95% 75% at 0% 65%, color-mix(in oklab, var(--paper) 75%, transparent), transparent 62%),
-    radial-gradient(60% 50% at 50% 40%, color-mix(in oklab, var(--glow) 8%, transparent), transparent 70%),
-    color-mix(in oklab, var(--paper) 84%, var(--brand) 16%);
+    radial-gradient(120% 80% at 100% 0%, color-mix(in oklab, var(--accent-soft) 72%, transparent), transparent 60%),
+    radial-gradient(90% 72% at 0% 70%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 62%),
+    radial-gradient(70% 55% at 52% 38%, color-mix(in oklab, var(--glow) 10%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in oklab, var(--paper) 68%, var(--accent) 32%), color-mix(in oklab, var(--paper) 80%, var(--accent) 20%));
 }
 .hero__grid {
   display: grid;
@@ -171,7 +173,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.75rem;
-  color: var(--muted);
+  color: color-mix(in oklab, var(--ink) 60%, var(--muted) 40%);
   font-size: .78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -184,57 +186,10 @@
   aspect-ratio: 3/4;
   max-height: 85vh;
   border-radius: var(--radius);
-  background:
-    linear-gradient(160deg, color-mix(in oklab, var(--paper) 90%, white), color-mix(in oklab, var(--accent-soft) 80%, var(--paper)));
+  background: var(--paper);
   box-shadow: var(--shadow);
   overflow: hidden;
   isolation: isolate;
-}
-.hero__panel::before {
-  /* moving light ribbon */
-  content: '';
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(40% 50% at 30% 40%, color-mix(in oklab, var(--glow) 45%, transparent), transparent 60%);
-  filter: blur(40px);
-  transform: translate(calc(var(--scroll) * 30px), calc(var(--scroll) * -40px));
-  transition: transform .1s linear;
-  mix-blend-mode: multiply;
-  opacity: .6;
-}
-.hero__panel::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 60px, color-mix(in oklab, var(--line) 40%, transparent) 60px 61px),
-    repeating-linear-gradient(0deg, transparent 0 60px, color-mix(in oklab, var(--line) 25%, transparent) 60px 61px);
-  opacity: .25;
-  mask-image: radial-gradient(70% 70% at 50% 50%, black 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, black 30%, transparent 75%);
-}
-.hero__panel-tag {
-  position: absolute;
-  left: 1.5rem;
-  bottom: 1.5rem;
-  color: var(--brand);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.4rem;
-  line-height: 1.1;
-  max-width: 14ch;
-  z-index: 2;
-}
-.hero__panel-corner {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  font-size: .72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
-  z-index: 2;
 }
 
 /* Services index */
@@ -257,7 +212,7 @@
 
 .service-row {
   display: grid;
-  grid-template-columns: 0.6fr 1.6fr 2fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 2.1fr);
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
   padding-block: clamp(2.2rem, 4vw, 3.2rem);
@@ -305,6 +260,62 @@
 .service-row__items li:last-child::after {
   content: '';
   margin-left: 0;
+}
+
+/* Rituais — a ruled index that draws itself in, then settles */
+.service-row[data-reveal] {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  will-change: auto;
+  border-top-color: transparent;
+  transition: background var(--dur-hover) var(--ease);
+}
+.service-row[data-reveal]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: color-mix(in oklab, var(--accent) 55%, var(--line));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.85s var(--ease);
+}
+.service-row[data-reveal].is-in::before {
+  transform: scaleX(1);
+}
+.service-row[data-reveal] > div,
+.service-row[data-reveal] > ul {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.service-row[data-reveal] > div { transition-delay: 0.08s; }
+.service-row[data-reveal] > ul { transition-delay: 0.16s; }
+.service-row[data-reveal].is-in > div,
+.service-row[data-reveal].is-in > ul {
+  opacity: 1;
+  transform: none;
+}
+html:not(.js) .service-row[data-reveal] > div,
+html:not(.js) .service-row[data-reveal] > ul {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-row[data-reveal] > div,
+  .service-row[data-reveal] > ul {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .service-row[data-reveal]::before {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
 }
 
 /* Experience band (cocoa) */
@@ -416,18 +427,9 @@
   position: relative;
   aspect-ratio: 5/6;
   border-radius: var(--radius);
-  background:
-    linear-gradient(140deg, var(--paper), color-mix(in oklab, var(--accent-soft) 60%, var(--paper)));
+  background: var(--paper);
   box-shadow: var(--shadow);
   overflow: hidden;
-}
-.proof__visual::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(60% 50% at 30% 40%, color-mix(in oklab, var(--glow) 30%, transparent), transparent 65%);
-  mix-blend-mode: multiply;
-  opacity: .5;
 }
 .proof__visual-caption {
   position: absolute;
@@ -590,26 +592,7 @@
 }
 
 /* Photo fills for real assets */
-.hero__panel {
-  background: var(--paper);
-}
-.hero__panel img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-}
-.hero__panel::before,
-.hero__panel::after {
-  display: none;
-}
-
-.proof__visual {
-  background: var(--paper);
-}
+.hero__panel img,
 .proof__visual img {
   position: absolute;
   inset: 0;
@@ -619,9 +602,7 @@
   object-position: center;
   z-index: 0;
 }
-.proof__visual::before {
-  display: none;
-}
+
 /* Conecta surface */
 .conecta {
   background:
@@ -665,4 +646,5 @@
 }
 .service-row.is-in .kw::after {
   transform: scaleX(1);
+  transition-delay: 0.5s;
 }

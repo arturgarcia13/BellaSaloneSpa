@@ -91,39 +91,23 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
       </div>
     </footer>
     <script>
-      // Reveal + light band. One authored moment. Runs on view and respects motion preference.
-      const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Reveal choreography. One IntersectionObserver toggles .is-in both ways so
+      // animations replay on scroll, without a page reload.
       const js = document.documentElement.classList.contains('js');
       if (js) {
         const io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            if (e.isIntersecting) {
-              e.target.classList.add('is-in');
-            } else {
-              e.target.classList.remove('is-in');
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in');
+              } else {
+                e.target.classList.remove('is-in');
+              }
             }
-          }
-        },
-        { threshold: 0.14, rootMargin: '0px 0px -10% 0px' }
-      );
-      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
-      }
-
-      if (!prefersReduced) {
-        let ticking = false;
-        const update = () => {
-          const y = window.scrollY;
-          const h = document.documentElement.scrollHeight - window.innerHeight;
-          const p = h > 0 ? y / h : 0;
-          document.documentElement.style.setProperty('--scroll', String(p));
-          ticking = false;
-        };
-        const onScroll = () => {
-          if (!ticking) { requestAnimationFrame(update); ticking = true; }
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        update();
+          },
+          { threshold: 0.14, rootMargin: '0px 0px -10% 0px' }
+        );
+        document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
       }
     </script>
   </body>

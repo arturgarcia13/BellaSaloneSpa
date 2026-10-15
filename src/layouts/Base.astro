@@ -49,15 +49,24 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           <span class="brand__mark">Bella</span>
           <span class="brand__sub">Salon &amp; Spa</span>
         </a>
-        <nav class="site-header__nav" aria-label="Principal">
-          <a href="#rituais">Rituais</a>
-          <a href="#experiencia">Experiência</a>
-          <a href="#conecta">Conecta</a>
-          <a href="#unidades">Unidades</a>
-          <a class="btn btn--small btn--ghost" href="#unidades">Agendar</a>
-        </nav>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+          <span class="menu-toggle__text">Menu</span>
+          <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+        </button>
       </div>
     </header>
+
+    <div class="site-menu" id="site-menu" data-menu>
+      <nav class="site-menu__nav" aria-label="Principal">
+        <a href="#rituais">Rituais</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#conecta">Conecta</a>
+        <a href="#unidades">Unidades</a>
+        <div class="site-menu__cta">
+          <a class="btn btn--cta" href="#unidades">Agendar meu horário</a>
+        </div>
+      </nav>
+    </div>
     <main id="main" tabindex="-1">
       <slot />
     </main>
@@ -108,6 +117,32 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           { threshold: 0.14, rootMargin: '0px 0px -10% 0px' }
         );
         document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+      }
+
+      // Header menu. One toggle, sections inside, Agendar as the closing action.
+      const menuToggle = document.querySelector('[data-menu-toggle]');
+      const siteMenu = document.querySelector('[data-menu]');
+      if (menuToggle && siteMenu) {
+        const setMenu = (open) => {
+          menuToggle.setAttribute('aria-expanded', String(open));
+          siteMenu.classList.toggle('is-open', open);
+          document.documentElement.classList.toggle('menu-open', open);
+          if (open) {
+            const first = siteMenu.querySelector('a');
+            if (first) first.focus({ preventScroll: true });
+          }
+        };
+        const menuOpen = () => menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.addEventListener('click', () => setMenu(!menuOpen()));
+        siteMenu.addEventListener('click', (e) => {
+          if (e.target.closest('a')) setMenu(false);
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menuOpen()) {
+            setMenu(false);
+            menuToggle.focus();
+          }
+        });
       }
     </script>
   </body>

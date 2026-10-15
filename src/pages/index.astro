@@ -57,7 +57,7 @@ import { site } from '../data/site';
             <p class="service-row__sub">{s.subtitle}</p>
           </div>
           <ul class="service-row__items">
-            {s.items.map((item) => <li>{item}</li>)}
+            {s.items.map((item) => <li set:html={item} />)}
           </ul>
         </article>
       ))}

@@ -60,22 +60,22 @@ export const site = {
     {
       title: 'Cabelos',
       subtitle: 'Rituais de cor e luz',
-      items: ['Loiros de assinatura', 'Mechas e balayage', 'Coloração e descoloração', 'Tratamentos e reconstrução'],
+      items: ['<span class="kw">Loiros</span> de assinatura', 'Mechas e <span class="kw">balayage</span>', '<span class="kw">Coloração</span> e descoloração', 'Tratamentos e <span class="kw">reconstrução</span>'],
     },
     {
       title: 'Rosto & Olhar',
       subtitle: 'Precisão milimétrica',
-      items: ['Micropigmentação', 'Brow lamination', 'Design de sobrancelhas', 'Acabamento e tintura'],
+      items: ['<span class="kw">Micropigmentação</span>', '<span class="kw">Brow lamination</span>', 'Design de <span class="kw">sobrancelhas</span>', 'Acabamento e <span class="kw">tintura</span>'],
     },
     {
       title: 'Dia da Noiva',
       subtitle: 'Atendimento exclusivo',
-      items: ['Sala privativa', 'Produção completa', 'Cronograma dedicado', 'Assessoria de imagem'],
+      items: ['Sala <span class="kw">privativa</span>', 'Produção <span class="kw">completa</span>', 'Cronograma <span class="kw">dedicado</span>', 'Assessoria de <span class="kw">imagem</span>'],
     },
     {
       title: 'Spa Urbano',
       subtitle: 'Beleza que restaura',
-      items: ['Estética facial', 'Cuidados com a pele', 'Rituais de relaxamento', 'Tratamentos corporais'],
+      items: ['Estética <span class="kw">facial</span>', 'Cuidados com a <span class="kw">pele</span>', 'Rituais de <span class="kw">relaxamento</span>', 'Tratamentos <span class="kw">corporais</span>'],
     },
   ],
   proof: {

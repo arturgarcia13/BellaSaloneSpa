@@ -102,8 +102,9 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(120% 80% at 100% 0%, color-mix(in oklab, var(--accent-soft) 70%, transparent), transparent 55%),
-    radial-gradient(90% 70% at 0% 60%, color-mix(in oklab, var(--paper) 60%, transparent), transparent 60%),
+    radial-gradient(125% 85% at 100% 0%, color-mix(in oklab, var(--accent-soft) 82%, transparent), transparent 58%),
+    radial-gradient(95% 75% at 0% 65%, color-mix(in oklab, var(--paper) 75%, transparent), transparent 62%),
+    radial-gradient(60% 50% at 50% 40%, color-mix(in oklab, var(--glow) 8%, transparent), transparent 70%),
     var(--bg);
 }
 .hero__grid {
@@ -238,7 +239,10 @@
 
 /* Services index */
 .services {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+  background:
+    radial-gradient(80% 60% at 100% 0%, color-mix(in oklab, var(--accent-soft) 28%, transparent), transparent 62%),
+    var(--bg);
 }
 .services__head {
   display: grid;
@@ -368,7 +372,9 @@
 
 /* Proof */
 .proof {
-  background: var(--bg);
+  background:
+    color-mix(in oklab, var(--paper) 62%, var(--bg));
+  border-top: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
 }
 .proof__grid {
   display: grid;
@@ -438,8 +444,9 @@
 
 /* Units */
 .units {
-  background: color-mix(in oklab, var(--paper) 50%, var(--bg));
-  border-top: 1px solid var(--line);
+  background:
+    color-mix(in oklab, var(--paper) 42%, var(--bg));
+  border-top: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
 }
 .units__head {
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
@@ -615,4 +622,26 @@
 }
 .proof__visual::before {
   display: none;
+}
+/* Conecta surface */
+.conecta {
+  background:
+    color-mix(in oklab, var(--accent-soft) 38%, var(--bg));
+  border-top: 1px solid color-mix(in oklab, var(--accent) 32%, transparent);
+}
+
+/* Softer boutique cards */
+.unit-card {
+  border-color: color-mix(in oklab, var(--line) 70%, transparent);
+  box-shadow: 0 14px 30px -24px rgba(45, 35, 30, 0.22);
+}
+
+/* Label color rhythm */
+.hero .label,
+.conecta .label {
+  color: var(--cta);
+}
+
+.band .label {
+  color: var(--accent);
 }

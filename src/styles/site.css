@@ -584,6 +584,9 @@
 }
 
 /* Photo fills for real assets */
+.hero__panel {
+  background: var(--paper);
+}
 .hero__panel img {
   position: absolute;
   inset: 0;
@@ -595,13 +598,12 @@
 }
 .hero__panel::before,
 .hero__panel::after {
-  z-index: 1;
-}
-.hero__panel-corner,
-.hero__panel-tag {
-  z-index: 2;
+  display: none;
 }
 
+.proof__visual {
+  background: var(--paper);
+}
 .proof__visual img {
   position: absolute;
   inset: 0;
@@ -612,8 +614,5 @@
   z-index: 0;
 }
 .proof__visual::before {
-  z-index: 1;
-}
-.proof__visual-caption {
-  z-index: 2;
+  display: none;
 }

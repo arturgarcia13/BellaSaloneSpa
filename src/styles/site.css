@@ -541,21 +541,6 @@
   font-size: .78rem;
 }
 
-/* Light band driven by scroll variable on <html> */
-.light-band {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40vh;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(60% 45% at 50% 10%, color-mix(in oklab, var(--glow) 14%, transparent), transparent 70%);
-  opacity: 0.5;
-  transform: translateY(calc(var(--scroll) * 120vh));
-  mix-blend-mode: multiply;
-}
-
 /* Responsive */
 @media (max-width: 900px) {
   .hero__grid {

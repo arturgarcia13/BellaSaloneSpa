@@ -597,3 +597,36 @@
     font-size: .7rem;
   }
 }
+
+/* Photo fills for real assets */
+.hero__panel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero__panel::before,
+.hero__panel::after {
+  z-index: 1;
+}
+.hero__panel-corner,
+.hero__panel-tag {
+  z-index: 2;
+}
+
+.proof__visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.proof__visual::before {
+  z-index: 1;
+}
+.proof__visual-caption {
+  z-index: 2;
+}

@@ -95,21 +95,19 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
       const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const js = document.documentElement.classList.contains('js');
       if (js) {
-        const supportsViewTimeline = CSS.supports && CSS.supports('animation-timeline', 'view()');
-      if (!supportsViewTimeline) {
         const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              if (e.isIntersecting) {
-                e.target.classList.add('is-in');
-                io.unobserve(e.target);
-              }
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-in');
+            } else {
+              e.target.classList.remove('is-in');
             }
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-        );
-        document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
-      }
+          }
+        },
+        { threshold: 0.14, rootMargin: '0px 0px -10% 0px' }
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
       }
 
       if (!prefersReduced) {

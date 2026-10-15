@@ -16,13 +16,22 @@ export const site = {
     {
       name: 'Meireles',
       address: 'Rua José Vilar, 1681, Meireles, Fortaleza, CE',
-      routeHref:
-        'https://www.waze.com/pt-PT/live-map/directions/br/ce/bella-salon-and-spa-jose-vilar?to=place.ChIJ52RlqfxJxwcRB9EHguqyVTg',
+      phone: '(85) 3512-4067',
+      whatsappHref:
+        'https://wa.me/558535142116?text=Ol%C3%A1%21+Vi+o+Instagram+do+sal%C3%A3o+e+gostaria+de+saber+mais+sobre+os+servi%C3%A7os.',
+      wazeHref:
+        'https://www.waze.com/ul?q=Rua%20Jos%C3%A9%20Vilar%201681%20Meireles%20Fortaleza&navigate=yes',
+      mapsHref: 'https://maps.google.com/?q=Rua+Jos%C3%A9+Vilar+1681+Meireles+Fortaleza',
     },
     {
       name: 'Aldeota',
       address: 'Av. Senador Virgílio Távora, 2201, Loja 02, Aldeota, Fortaleza, CE',
-      routeHref: 'https://maps.google.com/?q=Av.+Senador+Virgilio+Tavora+2201+Aldeota+Fortaleza',
+      phone: '(85) 3512-4067',
+      whatsappHref:
+        'https://wa.me/558598573936?text=Ol%C3%A1%21+Vi+o+Instagram+do+sal%C3%A3o+e+gostaria+de+saber+mais+sobre+os+servi%C3%A7os.',
+      wazeHref:
+        'https://www.waze.com/ul?q=Av%20Senador%20Virgilio%20Tavora%202201%20Aldeota%20Fortaleza&navigate=yes',
+      mapsHref: 'https://maps.google.com/?q=Av.+Senador+Virgilio+Tavora+2201+Aldeota+Fortaleza',
     },
   ],
   hero: {
@@ -78,5 +87,23 @@ export const site = {
     ],
     note: 'Depoimentos e galerias de clientes são publicados à medida que são autorizados.',
   },
+  podcasts: [
+    {
+      name: 'BELLA Conecta',
+      platform: 'YouTube',
+      channel: '@bellaconecta',
+      href: 'https://www.youtube.com/@bellaconecta',
+      description: 'Podcast sobre carreira e propósito. Um projeto do BELLA Salon & Spa.',
+    },
+    {
+      name: 'BELLA Conecta',
+      platform: 'Spotify',
+      channel: 'Bella Conecta',
+      href: 'https://open.spotify.com/show/033Y56rbOSedBJmn8ZU2V6',
+      description:
+        'Podcast com histórias e conversas inspiradoras sobre empreendedorismo, liderança, propósito, carreira e desenvolvimento pessoal. Um espaço para crescer, conectar e gerar impacto.',
+    },
+  ],
+
   seoTitle: 'BELLA Salon & Spa · Salão e spa urbano em Fortaleza',
 };

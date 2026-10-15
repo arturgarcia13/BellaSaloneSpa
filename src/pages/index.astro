@@ -17,7 +17,7 @@ import { site } from '../data/site';
           </h1>
           <p class="hero__lede">{site.hero.lede}</p>
           <div class="hero__actions">
-            <a class="btn btn--cta" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+            <a class="btn btn--cta" href="#unidades">
               {site.hero.cta}
             </a>
             <a class="btn btn--ghost" href="#rituais">
@@ -109,6 +109,34 @@ import { site } from '../data/site';
     </div>
   </section>
 
+  <section id="conecta" class="conecta section">
+    <div class="container">
+      <div class="units__head" data-reveal>
+        <p class="label">BELLA Conecta</p>
+        <h2>Laboratório de propósito, além do salão.</h2>
+        <p style="margin-top:1.25rem;color:var(--muted);max-width:44rem;">
+          O BELLA Conecta é o braço de conteúdo do salão: conversas sobre carreira, propósito,
+          empreendedorismo e desenvolvimento pessoal. Escute no YouTube ou no Spotify.
+        </p>
+      </div>
+
+      <div class="units__grid">
+        {site.podcasts.map((p) => (
+          <article class="unit-card" data-reveal>
+            <h3 class="unit-card__name">{p.platform}</h3>
+            <p class="unit-card__addr">{p.description}</p>
+            <p class="unit-card__status">{p.channel}</p>
+            <div class="unit-card__row">
+              <a class="btn btn--cta btn--small" href={p.href} target="_blank" rel="noopener noreferrer">
+                Ouvir no {p.platform}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section id="unidades" class="units section">
     <div class="container">
       <div class="units__head" data-reveal>
@@ -127,10 +155,13 @@ import { site } from '../data/site';
             <p class="unit-card__addr">{u.address}</p>
             <p class="unit-card__status">{u.name === 'Meireles' ? 'Seg a sab, 8h as 19h' : 'Horario: seg a sab, 8h as 19h'}</p>
             <div class="unit-card__row">
-              <a class="btn btn--cta btn--small" href={u.routeHref} target="_blank" rel="noopener noreferrer">
-                Traçar rota
+              <a class="btn btn--ghost btn--small" href={u.wazeHref} target="_blank" rel="noopener noreferrer">
+                Waze
               </a>
-              <a class="btn btn--ghost btn--small" href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+              <a class="btn btn--ghost btn--small" href={u.mapsHref} target="_blank" rel="noopener noreferrer">
+                Maps
+              </a>
+              <a class="btn btn--cta btn--small" href={u.whatsappHref} target="_blank" rel="noopener noreferrer">
                 Agendar
               </a>
             </div>

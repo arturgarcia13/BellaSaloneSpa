@@ -105,7 +105,7 @@
     radial-gradient(125% 85% at 100% 0%, color-mix(in oklab, var(--accent-soft) 82%, transparent), transparent 58%),
     radial-gradient(95% 75% at 0% 65%, color-mix(in oklab, var(--paper) 75%, transparent), transparent 62%),
     radial-gradient(60% 50% at 50% 40%, color-mix(in oklab, var(--glow) 8%, transparent), transparent 70%),
-    var(--bg);
+    color-mix(in oklab, var(--bg) 84%, var(--deep) 16%);
 }
 .hero__grid {
   display: grid;
@@ -643,4 +643,25 @@
 
 .band .label {
   color: var(--accent);
+}
+
+/* Rituals keyword emphasis */
+.service-row__title {
+  position: relative;
+  display: inline-block;
+  color: var(--brand);
+}
+.service-row__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  width: 0;
+  height: 2px;
+  background: var(--cta);
+  transition: width 0.55s var(--ease);
+}
+.service-row.is-in .service-row__title::after,
+.service-row:hover .service-row__title::after {
+  width: 100%;
 }

@@ -85,7 +85,6 @@ export const site = {
       'Resultados documentados em antes e depois, com o consentimento de cada cliente.',
       'Produtos profissionais selecionados para a realidade do clima de Fortaleza.',
     ],
-    note: 'Depoimentos e galerias de clientes são publicados à medida que são autorizados.',
   },
   podcasts: [
     {
